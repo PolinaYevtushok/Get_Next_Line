@@ -6,7 +6,7 @@
 /*   By: pyevtush <pyevtush@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/16 13:53:49 by pyevtush      #+#    #+#                 */
-/*   Updated: 2022/10/28 20:15:16 by pyevtush      ########   odam.nl         */
+/*   Updated: 2022/10/28 21:55:59 by pyevtush      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 	size_t	j;
 	char	*res;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (NULL);
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
