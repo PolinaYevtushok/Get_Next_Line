@@ -6,7 +6,7 @@
 /*   By: pyevtush <pyevtush@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/16 13:53:49 by pyevtush      #+#    #+#                 */
-/*   Updated: 2022/10/28 21:55:59 by pyevtush      ########   odam.nl         */
+/*   Updated: 2022/10/30 18:23:52 by pyevtush      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 	s2_len = ft_strlen(s2);
 	res = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
 	if (!res)
-		return (NULL);
+		return (free(s1), NULL);
 	i = 0;
 	j = 0;
 	while (i < s1_len)
@@ -79,7 +79,7 @@ char	*reset_str(char *str)
 	char	*res;
 
 	index = new_line_index(str) + 1;
-	res = ft_strdup((str + index));
+	res = ft_strdup(str + index);
 	free(str);
 	return (res);
 }

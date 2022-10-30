@@ -6,12 +6,11 @@
 /*   By: pyevtush <pyevtush@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/15 15:08:03 by pyevtush      #+#    #+#                 */
-/*   Updated: 2022/10/28 20:15:41 by pyevtush      ########   odam.nl         */
+/*   Updated: 2022/10/30 18:43:13 by pyevtush      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 int	is_newline_exist(char *s)
 {
@@ -37,6 +36,8 @@ char	*extract_str(char *s)
 
 	size = new_line_index(s) + 1;
 	res = (char *) malloc ((size + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
 	i = 0;
 	while (i < size)
 	{
@@ -55,6 +56,8 @@ char	*return_line(char **str)
 	if (is_newline_exist(*str))
 	{
 		line = extract_str(*str);
+		if (!line)
+			return (free(*str), NULL);
 		*str = reset_str(*str);
 	}
 	else if (ft_strlen(*str))
@@ -79,7 +82,7 @@ char	*read_from_file(int fd, char *str)
 	bytes = 1;
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
-		return (NULL);
+		return (free(str), NULL);
 	while (!is_newline_exist(str) && bytes > 0)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);

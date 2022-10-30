@@ -6,7 +6,7 @@
 /*   By: pyevtush <pyevtush@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/25 20:29:52 by pyevtush      #+#    #+#                 */
-/*   Updated: 2022/10/25 20:30:19 by pyevtush      ########   odam.nl         */
+/*   Updated: 2022/10/30 18:02:53 by pyevtush      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 255
+# endif
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
