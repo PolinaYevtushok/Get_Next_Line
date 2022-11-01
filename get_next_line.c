@@ -6,7 +6,7 @@
 /*   By: pyevtush <pyevtush@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/15 15:08:03 by pyevtush      #+#    #+#                 */
-/*   Updated: 2022/10/30 18:43:13 by pyevtush      ########   odam.nl         */
+/*   Updated: 2022/10/30 18:52:17 by pyevtush      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,7 @@ char	*read_from_file(int fd, char *str)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes == -1)
-		{
-			if (str)
-				free(str);
-			return (free(buffer), NULL);
-		}
+			return (free(buffer), free(str), NULL);
 		buffer[bytes] = '\0';
 		str = ft_strjoin(str, buffer);
 		if (!str)
