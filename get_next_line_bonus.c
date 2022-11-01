@@ -6,7 +6,7 @@
 /*   By: pyevtush <pyevtush@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/25 20:20:28 by pyevtush      #+#    #+#                 */
-/*   Updated: 2022/10/30 18:34:50 by pyevtush      ########   odam.nl         */
+/*   Updated: 2022/11/01 21:30:48 by pyevtush      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*return_line(char **str)
 	{
 		line = extract_str(*str);
 		if (!line)
-			return (free(*str), NULL);
+			return (free(*str), *str = NULL, NULL);
 		*str = reset_str(*str);
 	}
 	else if (ft_strlen(*str))
@@ -87,11 +87,7 @@ char	*read_from_file(int fd, char *str)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes == -1)
-		{
-			if (str)
-				free(str);
-			return (free(buffer), NULL);
-		}
+			return (free(buffer), free(str), NULL);
 		buffer[bytes] = '\0';
 		str = ft_strjoin(str, buffer);
 		if (!str)

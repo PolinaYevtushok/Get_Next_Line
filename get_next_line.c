@@ -6,7 +6,7 @@
 /*   By: pyevtush <pyevtush@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/15 15:08:03 by pyevtush      #+#    #+#                 */
-/*   Updated: 2022/10/30 18:52:17 by pyevtush      ########   odam.nl         */
+/*   Updated: 2022/11/01 21:23:43 by pyevtush      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*return_line(char **str)
 	{
 		line = extract_str(*str);
 		if (!line)
-			return (free(*str), NULL);
+			return (free(*str), *str = NULL, NULL);
 		*str = reset_str(*str);
 	}
 	else if (ft_strlen(*str))
